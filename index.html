@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vince SecOperations | Cybersecurity Projects</title>
+  <title>Vince SecOperations | Memory Forensics Analysis</title>
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -11,6 +11,7 @@
       color: #c5c6c7;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
     header {
@@ -18,15 +19,16 @@
       color: #66fcf1;
       text-align: center;
       padding: 2rem 0;
+      border-bottom: 2px solid #45a29e;
     }
 
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
-    .project {
+    .project-header {
       background-color: #1f2833;
       border-radius: 12px;
       padding: 2rem;
@@ -34,65 +36,121 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .project h2 {
+    .project-header h2 {
       color: #66fcf1;
+      margin-top: 0;
     }
 
-    .project p {
-      color: #c5c6c7;
-      line-height: 1.5;
+    .task {
+      background-color: #1f2833;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 15px;
-      margin-top: 1rem;
+    .task h3 {
+      color: #66fcf1;
+      border-bottom: 1px solid #45a29e;
+      padding-bottom: 0.5rem;
+      margin-top: 0;
     }
 
-    .gallery img {
-      width: 100%;
+    .task-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .task-image {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .task-image img {
+      max-width: 100%;
       border-radius: 8px;
-      transition: transform 0.3s;
+      border: 1px solid #45a29e;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    .task-explanation {
+      background-color: #0b0c10;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #45a29e;
     }
 
-    .writeup {
+    .task-explanation h4 {
+      color: #66fcf1;
+      margin-top: 0;
+    }
+
+    .command {
       background-color: #0b0c10;
       padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
-      white-space: pre-wrap;
-      color: #c5c6c7;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      border-radius: 6px;
+      font-family: monospace;
+      color: #66fcf1;
+      margin: 1rem 0;
+      border: 1px solid #45a29e;
+    }
+
+    .findings {
+      background-color: #1a1f29;
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid #ff6b6b;
+      margin: 1rem 0;
+    }
+
+    .findings h4 {
+      color: #ff6b6b;
+      margin-top: 0;
     }
 
     a.button {
       display: inline-block;
       background-color: #45a29e;
       color: white;
-      padding: 10px 18px;
+      padding: 12px 24px;
       border-radius: 6px;
       text-decoration: none;
       margin-top: 1rem;
-      transition: background-color 0.3s;
+      transition: all 0.3s;
+      font-weight: bold;
     }
 
     a.button:hover {
       background-color: #66fcf1;
       color: #0b0c10;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
       font-size: 0.85rem;
       color: #c5c6c7;
       background-color: #1f2833;
+      border-top: 2px solid #45a29e;
+    }
+
+    @media (min-width: 768px) {
+      .task-content {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      
+      .task-image {
+        flex: 1;
+        min-width: 300px;
+      }
+      
+      .task-text {
+        flex: 2;
+      }
     }
   </style>
 </head>
@@ -100,52 +158,165 @@
 
   <header>
     <h1>Vince SecOperations</h1>
-    <p>Cybersecurity Research & Digital Forensics Projects</p>
+    <p>Memory Forensics Analysis: Amadey Trojan Investigation</p>
   </header>
 
   <main>
-    <div class="project">
-      <h2>Endpoint Forensics Project</h2>
-      <p>Comprehensive forensic analysis of endpoint artifacts, focusing on process behavior and registry anomalies.</p>
+    <div class="project-header">
+      <h2>Endpoint Memory Forensics Project</h2>
+      <p>Comprehensive forensic analysis of a Windows 7 memory dump infected with Amadey Trojan using Volatility3. This investigation reveals malicious processes, command and control communications, and persistence mechanisms.</p>
+      <a class="button" href="https://github.com/Vince-SecOperations/endpoint-forensics-1/tree/main/endpoint-forensic-001" target="_blank">View Full Project on GitHub</a>
+    </div>
 
-      <h3>Screenshots</h3>
-      <div class="gallery">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task01.png" alt="Task 1">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task02.png" alt="Task 2">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task03.png" alt="Task 3">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task04.png" alt="Task 4">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task05.png" alt="Task 5">
-        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task06.png" alt="Task 6">
+    <!-- Task 1: Process Analysis -->
+    <div class="task">
+      <h3>Task 1: Process Enumeration & Malicious Process Identification</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task01.png" alt="Process List Analysis">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Used Volatility3's <strong>windows.pslist</strong> plugin to enumerate running processes and identify suspicious activity.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.pslist.PsList
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Identified suspicious process <strong>lssass.exe</strong> (PID 2748) mimicking the legitimate Windows process <strong>lsass.exe</strong>. The malware uses this deceptive naming to evade detection while performing credential theft activities.</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <h3>Writeup</h3>
-      <div class="writeup" id="writeup">
-        Loading writeup...
+    <!-- Task 2: Process Location -->
+    <div class="task">
+      <h3>Task 2: Malware Location Analysis</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task02.png" alt="Command Line Analysis">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Executed <strong>windows.cmdline</strong> plugin to determine the exact file system location of the malicious process.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.cmdline --pid 2748
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Located malware at: <strong>C:\Users\0XSH3R~1\AppData\Local\Temp\925e7e99c5\lssass.exe</strong>. The use of the Temp folder and short filename format indicates deliberate obfuscation techniques commonly used by malware.</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <a class="button" href="https://github.com/Vince-SecOperations/endpoint-forensics-1/tree/main/endpoint-forensic-001" target="_blank">View Project on GitHub</a>
+    <!-- Task 3: Network Analysis -->
+    <div class="task">
+      <h3>Task 3: Network Communication Analysis</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task03.png" alt="Network Scan Results">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Used <strong>windows.netscan</strong> to identify network connections and potential C2 communications.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.netscan | grep 2748
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Discovered active connections to C2 server: <strong>41.75.84.12:80</strong>. The use of port 80 (HTTP) suggests the malware is disguising its communications as normal web traffic to evade detection.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 4: Memory Analysis -->
+    <div class="task">
+      <h3>Task 4: Memory Dump & String Analysis</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task04.png" alt="Memory Dump Analysis">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Dumped process memory using <strong>windows.memmap</strong> and analyzed strings for HTTP requests.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.memmap --pid 2748 --dump<br>
+              strings pid.2748.dmp | grep "GET /"
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Identified HTTP GET requests for additional payloads including DLL files, confirming the malware's modular nature and ongoing communication with C2 servers for payload delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 5: File System Analysis -->
+    <div class="task">
+      <h3>Task 5: File System Artifact Investigation</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task05.png" alt="File System Scan">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Scanned for malicious files using <strong>windows.filescan</strong> with targeted grep patterns.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.filescan | grep -E "cred64|clip64"
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Located downloaded payloads: <strong>cred64.dll</strong> and <strong>clip64.dll</strong> in AppData Roaming directory. These modular components represent the malware's credential theft and clipboard monitoring capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 6: Persistence Analysis -->
+    <div class="task">
+      <h3>Task 6: Persistence Mechanism Investigation</h3>
+      <div class="task-content">
+        <div class="task-image">
+          <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task06.png" alt="Persistence Analysis">
+        </div>
+        <div class="task-text">
+          <div class="task-explanation">
+            <h4>Analysis Steps:</h4>
+            <p>Investigated additional persistence mechanisms using comprehensive file scanning.</p>
+            <div class="command">
+              vol.py -f Windows7-Snapshot4.vmem windows.filescan | grep -E "lssass"
+            </div>
+          </div>
+          <div class="findings">
+            <h4>Key Findings:</h4>
+            <p>Discovered malware artifacts in multiple system locations including Tasks and Temp directories, indicating sophisticated persistence mechanisms designed to maintain access despite system reboots or cleanup attempts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-header">
+      <h3>Investigation Conclusion</h3>
+      <p>The memory forensics analysis successfully uncovered the complete Amadey Trojan infection chain, including initial compromise vector, C2 communications, payload delivery mechanisms, and persistence techniques. The investigation demonstrates the importance of comprehensive memory analysis in modern incident response.</p>
+      <a class="button" href="https://github.com/Vince-SecOperations/endpoint-forensics-1/tree/main/endpoint-forensic-001" target="_blank">View Complete Analysis on GitHub</a>
     </div>
   </main>
 
   <footer>
-    © 2025 Vince SecOperations | GitHub Pages
+    © 2025 Vince SecOperations | Cybersecurity Research & Digital Forensics
   </footer>
-
-  <script>
-    fetch("https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/writeup.txt")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Writeup not found');
-        }
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById("writeup").textContent = data;
-      })
-      .catch(error => {
-        document.getElementById("writeup").textContent = "Unable to load writeup. Error: " + error.message;
-      });
-  </script>
 
 </body>
 </html>

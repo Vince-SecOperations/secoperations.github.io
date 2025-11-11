@@ -110,12 +110,12 @@
 
       <h3>Screenshots</h3>
       <div class="gallery">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task01.png" alt="Task 1">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task02.png" alt="Task 2">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task03.png" alt="Task 3">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task04.png" alt="Task 4">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task05.png" alt="Task 5">
-        <img src="https://github.com/Vince-SecOperations/endpoint-forensic-001/raw/main/images/Task06.png" alt="Task 6">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task01.png" alt="Task 1">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task02.png" alt="Task 2">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task03.png" alt="Task 3">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task04.png" alt="Task 4">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task05.png" alt="Task 5">
+        <img src="https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/images/Task06.png" alt="Task 6">
       </div>
 
       <h3>Writeup</h3>
@@ -123,7 +123,7 @@
         Loading writeup...
       </div>
 
-      <a class="button" href="https://github.com/Vince-SecOperations/endpoint-forensic-001" target="_blank">View Project on GitHub</a>
+      <a class="button" href="https://github.com/Vince-SecOperations/endpoint-forensics-1/tree/main/endpoint-forensic-001" target="_blank">View Project on GitHub</a>
     </div>
   </main>
 
@@ -132,14 +132,18 @@
   </footer>
 
   <script>
-    // Fetch and display writeup.md or writeup.txt
-    fetch("https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensic-001/main/writeup.txt")
-      .then(response => response.text())
+    fetch("https://raw.githubusercontent.com/Vince-SecOperations/endpoint-forensics-1/main/endpoint-forensic-001/writeup.txt")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Writeup not found');
+        }
+        return response.text();
+      })
       .then(data => {
         document.getElementById("writeup").textContent = data;
       })
       .catch(error => {
-        document.getElementById("writeup").textContent = "Unable to load writeup.";
+        document.getElementById("writeup").textContent = "Unable to load writeup. Error: " + error.message;
       });
   </script>
 
